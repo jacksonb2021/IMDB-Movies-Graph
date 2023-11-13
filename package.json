@@ -1,15 +1,12 @@
 {
-  "name": "CSC343-F23-HW4",
+  "name": "IMDB movie graph",
   "version": "1.0.0",
-  "description": "CSC 343 Human Computer Interaction: Assignment 4 taught by Stephen Kobourov, Haris Riaz, Aayush Pinto & Jacob Miller at the University of Arizona, Fall 2023",
+  "description": "IMDB Movie graph from CSC343 at UofA",
   "main": "index.js",
   "type": "module",
-  "scripts": {
-      "test": "mocha tests.js"
-  },
   "repository": {
       "type": "git",
-      "url": "https://github.com/hriaz17/CSC343-F23-HW4"
+      "url": "https://github.com/jacksonb2021/IMDB-Movies-Graph"
   },
   "keywords": [
       "graph",
@@ -17,7 +14,7 @@
       "assignment",
       "javascript"
   ],
-  "author": "Haris Riaz",
+  "author": "Jackson Burns",
   "license": "MIT",
   "dependencies": {
       "d3": "^7.8.5",
