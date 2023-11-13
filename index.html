@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Visualization Tool</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f7f7f7;
+
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 80px;
+            right: 30px;
+            background-color: rgba(163, 26, 26, 0.8);
+            padding: 10px;
+            border: 1px solid #000;
+            z-index: 0;
+            max-width:200px;
+        }
+        .info{
+            position: absolute;
+            top: 80px;
+            left: 30px;
+            background-color: rgba(163, 26, 26, 0.8);
+            padding: 10px;
+            border: 1px solid #000;
+            max-width: 250px;
+        }
+
+        .title-container {
+            width: 100%;
+            padding: 5px 0;
+            background-color: #333;
+        }
+
+        .title-container h2 {
+            margin: 0;
+            color: #fff;
+            font-size: 2em;
+        }
+
+        #graphviz {
+            width: 100%;
+            height: 80vh;
+            border-top: 1px solid #eee;
+        }
+        #theSVG{
+            width: 100%;
+            height: 1200px;
+        }
+
+
+    </style>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script type="module" src="index.js"></script>
+</head>
+<body>
+<div class="title-container"><h2>IMDB Movies Graph</h2></div>
+<h3>Click in the whitespace to add a new node. Drag one node to another to link them
+    together <br> click a node to edit attributes or delete it. click a link to delete it
+</h3>
+<div>
+    <p>Graph Viz Type:
+    <select name="graphType" id="graphType">
+        <option value="force">Force Directed</option>
+        <option value="circular">Circular</option>
+    </select>
+        <input type="button" onclick="window._something.reloadGraph()" value="change">
+    </p>
+</div>
+<p>Label Type:
+    <select name="labelType" id="labelType">
+        <option value="id">id</option>
+        <option value="name">name</option>
+        <option value="genre">genre</option>
+        <option value="director">director</option>
+    </select>
+    <input type="button" onclick="window._something.changeType()" value="change">
+</p>
+<p>Use Largest Connected Component?
+    <input type="checkbox" id="useLargest" name="useLargest" value="val"
+           onchange="window._something.largestConnected(this)">
+    <br>If you add a new node while this is checked, it will not appear (it is not apart of the
+    largest component)
+</p>
+<input type="radio" id="nodeIDChange" name="to_change" value="id">
+<label for="nodeIDChange">nodeID</label><br>
+<input type="radio" id="rankChange" name="to_change" value="rank">
+<label for="rankChange">rank</label><br>
+<input type="radio" id="nameChange" name="to_change" value="name">
+<label for="nameChange">name</label><br>
+<input id="genreChange" type="radio" name="to_change" value="genre">
+<label for="genreChange">genre</label><br>
+<input id="castChange" type="radio" name="to_change" value="cast">
+<label for="castChange">cast</label><br>
+<input id="directorChange" type="radio" name="to_change" value="director">
+<label for="directorChange">director</label><br>
+<input id="writerChange" type="radio" name="to_change" value="writer">
+<label for="writerChange">writer</label><br>
+
+<div>
+
+    <p>Search Node:<input type="text" id='searchNode' placeholder="attribute to search for"></p>
+    <input type="button" onclick="window._something.searchNode()" value="search">
+    <input type="button" onclick="window._something.reloadGraph()" value="clear search">
+
+
+</div>
+<div class="overlay">
+    <button  id="computeStats"
+             onclick="window._something.displayGraphStatistics()">Compute
+        statistics</button>
+    <div id="stats">
+        <p>Average Node Degree: <span id="avgDegree"></span></p>
+        <p>Graph Density: <span id="graphDensity"></span></p>
+        <p>Graph Diameter: <span id="graphDiameter"></span></p>
+        <p>Number of Nodes: <span id="numOfNodes"></span></p>
+        <p>Number of Links: <span id="numOfLinks"></span></p>
+        <p>Average Path Length: <span id="APL"></span></p>
+    </div>
+</div>
+
+<div id="graphviz" class="container">
+    <svg id="theSVG"></svg>
+
+
+
+    <div class="info">
+        <img id="moviePoster" src="" alt="Movie Poster" width="200" height="300">
+        <p><span id="movieName" style="font-size: 35px"></span></p>
+        <p>Movie ID: <span id="movieID"></span></p>
+        <p>Movie Rank: <span id="movieRank"></span></p>
+        <p>Year of Release: <span id="movieYear"></span></p>
+        <p>IMDB Rating: <span id="movieRating"></span></p>
+        <p>Total Duration: <span id="movieDuration"></span></p>
+        <p>Genre: <span id="movieGenre"></span></p>
+        <p>Director(s): <span id="movieDirectors"></span></p>
+    </div>
+</div>
+
+</body>
+</html>
