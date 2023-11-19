@@ -1,4 +1,4 @@
-# CSC-343-HW4
+# IMDB Movies Graph
 
 
 ### Created by Jackson Burns
