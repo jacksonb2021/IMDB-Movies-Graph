@@ -6,7 +6,7 @@
   "type": "module",
   "repository": {
       "type": "git",
-      "url": "https://github.com/jacksonb2021/IMDB-Movies-Graph"
+      "url": "https://github.com/jacksonb2021/Movies-Graph"
   },
   "keywords": [
       "graph",
