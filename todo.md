@@ -6,3 +6,5 @@
 3. [ ] rearrange input divs
 4. [ ] implement scrolling
 5. [ ] Fix circular graph layout
+6. [ ] start with director names 
+   1. [ ] only show last name truncated
