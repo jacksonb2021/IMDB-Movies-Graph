@@ -6,5 +6,6 @@
 3. [ ] rearrange input divs
 4. [ ] implement scrolling
 5. [ ] Fix circular graph layout
-6. [ ] start with director names 
-   1. [ ] only show last name truncated
+6. [x] start with director names 
+   1. [x] only show last name truncated
+7. [ ] search bar finds items that contain search query

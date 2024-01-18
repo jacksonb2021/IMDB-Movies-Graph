@@ -7,7 +7,7 @@ let clickedLink=false;
 let lastSearched = undefined;
 let GRAPH_OBJ = null;
 let LARGEST_OBJ = null;
-let label = 'id';
+let label = 'director';
 
 function changeType(){
 	let selection = document.getElementById("labelType");
@@ -279,7 +279,7 @@ function renderGraph(graphData, searchNode) {
 				d3.select(this).select("text").text(d=>d.genre.slice(0,5));
 			}
 			if(label==="director"){
-				d3.select(this).select("text").text(d=>d.directors.slice(0,5));
+				d3.select(this).select("text").text(d=>directorSplit(d.directors));
 			}
 		});
 
@@ -315,7 +315,7 @@ function renderGraph(graphData, searchNode) {
 			.attr("y", 8)
 			.attr("style", "font-size:10")
 			.attr("stroke", "green")
-			.text(d => d.directors.slice(0,5))
+			.text(d => directorSplit(d.directors))
 	}
 
 
@@ -759,6 +759,22 @@ function highlightNodes(list){
 
 
 	}
+}
+
+function directorSplit(name){
+	let str="";
+	if(name.includes(",")){
+		let splitted = name.split(",");
+		for(let i of splitted){
+			let split = name.split(" ");
+			str+=split[split.length-1]+",";
+		}
+		str = str.slice(0,-1);
+	} else {
+		let split = name.split(" ");
+		str = split[split.length-1];
+	}
+	return str;
 }
 
 let graphObj = new GraphClass();
